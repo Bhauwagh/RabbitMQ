@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  rabbitmq.conf: |
+    cluster_formation.peer_discovery_backend = {{ .Values.rabbitmq.cluster_formation.peer_discovery_backend }}
+    cluster_formation.k8s.host = {{ .Values.rabbitmq.cluster_formation.k8s_service_name }}
+    log.console = true
