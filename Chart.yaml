@@ -1,0 +1,6 @@
+apiVersion: v2
+name: rabbitmq-cluster
+description: A Helm chart for deploying RabbitMQ in a 3-node clustered configuration
+type: application
+version: 1.0.0
+appVersion: 3.11.11 
