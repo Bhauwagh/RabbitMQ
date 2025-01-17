@@ -1,0 +1,33 @@
+replicaCount: 3
+
+image:
+  repository: rabbitmq
+  tag: 3.11.11
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 5672
+  managementPort: 15672
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+persistence:
+  enabled: true
+  storageClass: standard
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+
+rabbitmq:
+  cluster_formation:
+    peer_discovery_backend: k8s
+    k8s_service_name: rabbitmq
+  default_user: admin
+  default_pass: secret
